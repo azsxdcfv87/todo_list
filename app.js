@@ -43,6 +43,14 @@ app.get('/todos/new', (req, res) => {
   return res.render('new')
 })
 
+app.get('/todos/:id', (req, res) => {
+  const id = req.params.id
+  return Todo.findById(id)
+    .lean()
+    .then((todo) => res.render('detail', { todo }))
+    .catch(error => console.log(error))
+})
+
 app.listen(port, () => {
   console.log(`APP is running http://localhost:${port}`)
 })
