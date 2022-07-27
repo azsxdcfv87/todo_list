@@ -1,7 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const exphbs = require('express-handlebars');
 const app = express()
 const port = 3000
+
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main', extname: '.handlebars' }))
+app.set('view engine', 'handlebars')
+app.set('views', './views')
 
 // 載入 mongoose, 設定連線 mongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -17,7 +22,7 @@ db.once('open', () => {
 })
 
 app.get('/', (req, res) => {
-  res.send('Hello Kiki')
+  res.send('index')
 })
 
 app.listen(port, () => {
