@@ -1,5 +1,4 @@
 <a href="./todos/new">Create</a>
-
 <ul>
   {{#each todos}}
     <li>
@@ -7,8 +6,8 @@
       {{this.name}}
       <a href="./todos/{{ this._id }}">detail</a>
       <a href="./todos/{{ this._id }}/edit">edit</a>
-      <form action="./todos/{{ this._id }}/delete" method="POST" style="display: inline;">
-      <button type="submit">delete</button>
+      <form action="./todos/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+        <button type="submit">delete</button>
       </form>
     </li>
   {{/each}}
