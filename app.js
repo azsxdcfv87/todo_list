@@ -10,7 +10,7 @@ const app = express()
 // app.js
 // 如果在 Heroku 環境則使用 process.env.PORT
 // 否則為本地環境，使用 3000 
-const PORT = process.env.PORT || 3000
+const port = process.env.PORT || 3000
 
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main', extname: '.handlebars' }))
 app.set('view engine', 'handlebars')
@@ -22,5 +22,5 @@ app.use(methodOverride('_method'))
 app.use(routes)
 
 app.listen(port, () => {
-  console.log(`APP is running http://localhost:${port}`)
+  console.log(`App is running on http://localhost:${port}`)
 })
